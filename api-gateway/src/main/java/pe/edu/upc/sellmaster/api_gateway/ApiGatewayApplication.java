@@ -68,6 +68,13 @@ public class ApiGatewayApplication {
 				.route(r -> r.path("/api/deviceIoT/assigned/{assigned}").and().method(HttpMethod.GET).uri("lb://iotdevice-service"))
 				.route(r -> r.path("/api/deviceIoT/type/{typeDeviceIoTId}").and().method(HttpMethod.GET).uri("lb://iotdevice-service"))
 				.route(r -> r.path("/api/deviceIoT/serial/{serialCode}").and().method(HttpMethod.GET).uri("lb://iotdevice-service"))
+				// Rutas para measurement-service
+				.route(r -> r.path("/measurement-service/v3/api-docs").and().method(HttpMethod.GET).uri("lb://measurement-service"))
+				.route(r -> r.path("/api/measurements").and().method(HttpMethod.POST).uri("lb://measurement-service"))
+				.route(r -> r.path("/api/measurements").and().method(HttpMethod.GET).uri("lb://measurement-service"))
+				.route(r -> r.path("/api/measurements/{id}").and().method(HttpMethod.PUT).uri("lb://measurement-service"))
+				.route(r -> r.path("/api/measurements/{id}").and().method(HttpMethod.DELETE).uri("lb://measurement-service"))
+				.route(r -> r.path("/api/measurements/{id}").and().method(HttpMethod.GET).uri("lb://measurement-service"))
 				.build();
 	}
 }

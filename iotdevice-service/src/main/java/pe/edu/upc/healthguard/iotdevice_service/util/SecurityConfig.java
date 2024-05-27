@@ -18,11 +18,12 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable) // Deshabilita CSRF
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(
-                                "/v3/api-docs/**",
+                                "/iotdevice-service/v3/api-docs/swagger-config",
+                                "/v3/api-docs",
                                 "/swagger-ui/**",
                                 "/swagger-ui.html",
                                 "/api/**",
-                                "/tickets-service/v3/api-docs",
+                                "/iotdevice-service/v3/api-docs",
                                 "/swagger-resources/**",
                                 "/webjars/**").permitAll() // Permitir acceso a Swagger
                         .anyRequest().authenticated() // Requerir autenticación para cualquier otra ruta
@@ -31,4 +32,6 @@ public class SecurityConfig {
 
         return http.build();
     }
+
+
 }
