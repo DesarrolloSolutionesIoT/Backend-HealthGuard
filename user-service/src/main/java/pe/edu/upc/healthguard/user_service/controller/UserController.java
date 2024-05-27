@@ -2,6 +2,7 @@ package pe.edu.upc.healthguard.user_service.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,8 @@ import java.util.List;
 @RequestMapping("/api/users")
 @RequiredArgsConstructor
 @Tag(name = "UserController", description = "API for user operations")
+@CrossOrigin
+@SecurityRequirement(name = "bearerAuth")
 public class UserController {
 
     private final UserService userService;

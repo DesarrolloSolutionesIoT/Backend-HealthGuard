@@ -55,6 +55,24 @@ public class DeviceIoTService {
         return mapToDeviceIoTResponse(deviceIoT);
     }
 
+    public List<DeviceIoTResponse> getDeviceIoTsByAssigned(boolean assigned) {
+        return deviceIoTRepository.findByAssigned(assigned).stream()
+                .map(this::mapToDeviceIoTResponse)
+                .collect(Collectors.toList());
+    }
+
+    public List<DeviceIoTResponse> getDeviceIoTsByTypeDeviceIoTId(long typeDeviceIoTId) {
+        return deviceIoTRepository.findByTypeDeviceIoTId(typeDeviceIoTId).stream()
+                .map(this::mapToDeviceIoTResponse)
+                .collect(Collectors.toList());
+    }
+
+    public DeviceIoTResponse getDeviceIoTBySerialCode(String serialCode) {
+        DeviceIoT deviceIoT = deviceIoTRepository.findBySerialCode(serialCode)
+                .orElseThrow(() -> new RuntimeException("Device IoT not found with serial code " + serialCode));
+        return mapToDeviceIoTResponse(deviceIoT);
+    }
+
     private DeviceIoTResponse mapToDeviceIoTResponse(DeviceIoT deviceIoT) {
         return DeviceIoTResponse.builder()
                 .id(deviceIoT.getId())

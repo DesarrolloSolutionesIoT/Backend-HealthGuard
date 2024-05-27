@@ -74,5 +74,23 @@ public class PatientService {
                 .orElseThrow(() -> new ResourceNotFoundException("Patient not found with id: " + id));
         return mapToPatientResponse(patient);
     }
+
+    public PatientResponse getPatientByDni(String dni) {
+        Patient patient = patientRepository.findByDni(dni)
+                .orElseThrow(() -> new ResourceNotFoundException("Patient not found with DNI: " + dni));
+        return mapToPatientResponse(patient);
+    }
+
+    public List<PatientResponse> getPatientsByGender(String gender) {
+        return patientRepository.findByGender(gender).stream()
+                .map(this::mapToPatientResponse)
+                .collect(Collectors.toList());
+    }
+
+    public List<PatientResponse> getPatientsByAge(int age) {
+        return patientRepository.findByAge(age).stream()
+                .map(this::mapToPatientResponse)
+                .collect(Collectors.toList());
+    }
 }
 

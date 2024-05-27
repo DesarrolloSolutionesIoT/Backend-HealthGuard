@@ -67,5 +67,29 @@ public class PatientController {
     public PatientResponse getPatientById(@PathVariable("id") long id) {
         return patientService.getPatientById(id);
     }
+
+    @GetMapping("/dni/{dni}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Get a patient by DNI", description = "Retrieves a specific patient by their DNI")
+    @ApiResponse(responseCode = "200", description = "Successful retrieval of patient")
+    public PatientResponse getPatientByDni(@PathVariable("dni") String dni) {
+        return patientService.getPatientByDni(dni);
+    }
+
+    @GetMapping("/gender/{gender}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Get patients by gender", description = "Retrieves a list of patients by their gender")
+    @ApiResponse(responseCode = "200", description = "Successful retrieval of patients")
+    public List<PatientResponse> getPatientsByGender(@PathVariable("gender") String gender) {
+        return patientService.getPatientsByGender(gender);
+    }
+
+    @GetMapping("/age/{age}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Get patients by age", description = "Retrieves a list of patients by their age")
+    @ApiResponse(responseCode = "200", description = "Successful retrieval of patients")
+    public List<PatientResponse> getPatientsByAge(@PathVariable("age") int age) {
+        return patientService.getPatientsByAge(age);
+    }
 }
 
