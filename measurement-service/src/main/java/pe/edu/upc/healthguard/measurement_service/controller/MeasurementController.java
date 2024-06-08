@@ -59,4 +59,12 @@ public class MeasurementController {
     public MeasurementResponse getMeasurementById(@PathVariable("id") long id) {
         return measurementService.getMeasurementById(id);
     }
+
+    @GetMapping("/patient/{patientId}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Get Measurements by Patient ID", description = "Retrieves all Measurements for a specific Patient ID")
+    @ApiResponse(responseCode = "200", description = "Successful retrieval of Measurements")
+    public List<MeasurementResponse> getMeasurementsByPatientId(@PathVariable("patientId") Long patientId) {
+        return measurementService.getMeasurementsByPatientId(patientId);
+    }
 }

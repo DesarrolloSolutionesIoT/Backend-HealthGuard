@@ -75,6 +75,7 @@ public class ApiGatewayApplication {
 				.route(r -> r.path("/api/measurements/{id}").and().method(HttpMethod.PUT).uri("lb://measurement-service"))
 				.route(r -> r.path("/api/measurements/{id}").and().method(HttpMethod.DELETE).uri("lb://measurement-service"))
 				.route(r -> r.path("/api/measurements/{id}").and().method(HttpMethod.GET).uri("lb://measurement-service"))
+				.route(r -> r.path("/api/measurements/patient/{patientId}").and().method(HttpMethod.GET).uri("lb://measurement-service"))
 				.build();
 	}
 }
