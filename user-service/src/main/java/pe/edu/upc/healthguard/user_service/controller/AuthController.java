@@ -11,7 +11,6 @@ import pe.edu.upc.healthguard.user_service.service.AuthService;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin
 @RequiredArgsConstructor
 public class AuthController {
 
