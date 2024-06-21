@@ -3,7 +3,6 @@ package pe.edu.upc.healthguard.patient_service.model.entites;
 import jakarta.persistence.*;
 import lombok.*;
 
-
 @Entity
 @Table(name = "patients")
 @Getter
