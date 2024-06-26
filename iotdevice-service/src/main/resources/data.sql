@@ -7,7 +7,7 @@ INSERT IGNORE INTO type_device_iot (id, name, description) VALUES
 
 -- Insert initial data into device_iot table
 INSERT IGNORE INTO device_iot (id, type_device_iot_id, assigned, serial_code) VALUES
-                                                                           (1, 1, false, 'TEMP123456'),
+                                                                           (1, 1, true, 'TEMP123456'),
                                                                            (2, 2, true, 'OXI1234567'),
                                                                            (3, 3, true, 'HRM1234567'),
-                                                                           (4, 4, false, 'RRM1234567');
+                                                                           (4, 4, true, 'RRM1234567');

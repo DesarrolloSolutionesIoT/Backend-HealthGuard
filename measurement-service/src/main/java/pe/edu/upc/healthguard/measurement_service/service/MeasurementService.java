@@ -74,4 +74,10 @@ public class MeasurementService {
                 .orElseThrow(() -> new ResourceNotFoundException("Measurement not found with id: " + id));
         return mapToMeasurementResponse(measurement);
     }
+
+    public List<MeasurementResponse> getMeasurementsByPatientId(Long patientId) {
+        return measurementRepository.findByPatientId(patientId).stream()
+                .map(this::mapToMeasurementResponse)
+                .collect(Collectors.toList());
+    }
 }

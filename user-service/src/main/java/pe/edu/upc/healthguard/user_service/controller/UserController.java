@@ -47,6 +47,14 @@ public class UserController {
         userService.updateUser(id, userRequest);
     }
 
+    @GetMapping("/email/{email}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Get a user by email", description = "Retrieves a specific user by their email")
+    @ApiResponse(responseCode = "200", description = "Successful retrieval of user")
+    public UserResponse getUserByEmail(@PathVariable("email") String email) {
+        return userService.getUserByEmail(email);
+    }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @Operation(summary = "Delete a user", description = "Deletes a specific user by their ID")
