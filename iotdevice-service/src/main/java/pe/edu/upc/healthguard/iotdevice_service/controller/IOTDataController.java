@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.healthguard.iotdevice_service.model.dtos.IOTDataRequest;
 import pe.edu.upc.healthguard.iotdevice_service.model.dtos.IOTDataResponse;
+import pe.edu.upc.healthguard.iotdevice_service.model.dtos.IOTDataValuesRequest;
 import pe.edu.upc.healthguard.iotdevice_service.service.IOTDataService;
 
 import java.util.List;
@@ -56,5 +57,11 @@ public class IOTDataController {
     @ResponseStatus(HttpStatus.OK)
     public List<IOTDataResponse> getIOTDataBySerialNumber(@PathVariable("serialNumber") String serialNumber) {
         return iotDataService.getIOTDataBySerialNumber(serialNumber);
+    }
+
+    @PutMapping("/values/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void updateIOTDataValues(@PathVariable("id") long id, @RequestBody IOTDataValuesRequest iotDataValuesRequest) {
+        iotDataService.updateIOTDataValues(id, iotDataValuesRequest);
     }
 }

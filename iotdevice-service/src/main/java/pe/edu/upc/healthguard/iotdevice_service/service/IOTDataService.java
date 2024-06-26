@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.healthguard.iotdevice_service.model.dtos.IOTDataRequest;
 import pe.edu.upc.healthguard.iotdevice_service.model.dtos.IOTDataResponse;
+import pe.edu.upc.healthguard.iotdevice_service.model.dtos.IOTDataValuesRequest;
 import pe.edu.upc.healthguard.iotdevice_service.model.entities.IOTData;
 import pe.edu.upc.healthguard.iotdevice_service.repository.IOTDataRepository;
 
@@ -89,5 +90,16 @@ public class IOTDataService {
                 .respiratoryRate(iotData.getRespiratoryRate())
                 .ultimaFecha(iotData.getUltimaFecha())
                 .build();
+    }
+
+    public void updateIOTDataValues(long id, IOTDataValuesRequest iotDataValuesRequest) {
+        IOTData existingIOTData = iotDataRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("IOT Data not found with id " + id));
+        existingIOTData.setTemperature(iotDataValuesRequest.getTemperature());
+        existingIOTData.setOximeter(iotDataValuesRequest.getOximeter());
+        existingIOTData.setHeartRate(iotDataValuesRequest.getHeartRate());
+        existingIOTData.setRespiratoryRate(iotDataValuesRequest.getRespiratoryRate());
+        iotDataRepository.save(existingIOTData);
+        log.info("Updated IOT Data values: {}", existingIOTData);
     }
 }

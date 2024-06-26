@@ -79,6 +79,11 @@ public class UserService {
                 .build();
     }
 
+    public UserResponse getUserByEmail(String email) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with email: " + email));
+        return mapToUserResponse(user);
+    }
 
     public UserResponse getUserById(long id) {
         User user = userRepository.findById(id)
